@@ -1,12 +1,4 @@
 GoodMorningRails::Application.routes.draw do
-  get "bookmark/get"
-
-  get "bookmark/post"
-
-  get "bookmark/put"
-
-  get "bookmark/delete"
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
