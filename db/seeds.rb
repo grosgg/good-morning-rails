@@ -8,6 +8,7 @@
 
 User.destroy_all
 Bookmark.destroy_all
+Stickyboard.destroy_all
 
 users = User.create!(
     [
@@ -50,3 +51,5 @@ Bookmark.create!(
         }
     ]
 )
+
+Stickyboard.create!({content:'Your new stickyboard'})

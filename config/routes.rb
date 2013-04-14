@@ -4,6 +4,7 @@ GoodMorningRails::Application.routes.draw do
     :controllers => {sessions:'sessions', users:'users'} # custom controller for API token access
 
   resources :bookmarks
+  resources :stickyboards, :only => [:index, :show, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
