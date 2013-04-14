@@ -1,6 +1,4 @@
 GoodMorningRails::Application.routes.draw do
-  resources :weather_keys
-
 
   devise_for :users,
     :controllers => {sessions:'sessions', users:'users'} # custom controller for API token access
