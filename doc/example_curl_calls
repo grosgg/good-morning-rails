@@ -1,0 +1,28 @@
+# Login
+curl -X POST -d '{"email":"marin.jeremy@gmail.com", "password":"sabusushi"}' http://localhost:3000/users/sign_in.json --header "Content-Type:application/json"
+
+curl -X POST -d '{"email":"tomoko1710@gmail.com", "password":"sabusushi"}' http://localhost:3000/users/sign_in.json --header "Content-Type:application/json"
+
+# Logout
+curl -X DELETE http://localhost:3000/users/sign_out.json?authentication_token=rHRWzYx7r5govWxsxJCK
+
+# Get all bookmarks
+curl -X GET -H "Accept: application/json" -H "Content-type: application/json"  http://localhost:3000/bookmarks.json?authentication_token=
+
+# Get one bookmark
+curl -X GET -H "Accept: application/json" -H "Content-type: application/json"  http://localhost:3000/bookmarks/1.json?authentication_token=
+
+# Add bookmark
+curl -X POST -d '{"bookmark":{"title":"Test Bookmark", "url":"http://test.fr", "description":"Caca"}}' http://localhost:3000/bookmarks.json?authentication_token=jCJCM5bxuHjirwxDCyrs --header "Content-Type:application/json"
+
+# Update bookmark
+curl -X PUT -d '{"bookmark":{"title":"Test Gros Bookmark", "url":"http://test.fr", "description":"Caca"}}' http://localhost:3000/bookmarks/7.json?authentication_token=jCJCM5bxuHjirwxDCyrs --header "Content-Type:application/json"
+
+# Delete bookmark
+curl -X DELETE -H "Accept: application/json" -H "Content-type: application/json"  http://localhost:3000/bookmarks/6.json?authentication_token=jCJCM5bxuHjirwxDCyrs
+
+# Get all stickyboards
+curl -X GET -H "Accept: application/json" -H "Content-type: application/json"  http://localhost:3000/stickyboards.json?authentication_token=jCJCM5bxuHjirwxDCyrs
+
+# Update stickyboard
+curl -X PUT -d '{"stickyboard":{"content":"Vous etes formidable!"}}' http://localhost:3000/stickyboards/1.json?authentication_token=jCJCM5bxuHjirwxDCyrs --header "Content-Type:application/json"
