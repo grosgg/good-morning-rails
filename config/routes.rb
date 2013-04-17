@@ -6,6 +6,8 @@ GoodMorningRails::Application.routes.draw do
   resources :bookmarks
   resources :stickyboards, :only => [:index, :show, :update]
 
+  match '*catchall' => 'api#options', :via => [:options]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
