@@ -5,6 +5,7 @@ GoodMorningRails::Application.routes.draw do
 
   resources :bookmarks
   resources :stickyboards, :only => [:index, :show, :update]
+  resources :weatherkeys, :only => [:index]
 
   match '*catchall' => 'api#options', :via => [:options]
 
