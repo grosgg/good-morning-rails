@@ -3,7 +3,8 @@ GoodMorningRails::Application.routes.draw do
   devise_for :users,
     :controllers => {sessions:'sessions', users:'users'} # custom controller for API token access
 
-  resources :bookmarks
+  resources :bookmarks, :except => [:new, :edit]
+  resources :velibstations, :except => [:new, :edit]
   resources :stickyboards, :only => [:index, :show, :update]
   resources :weatherkeys, :only => [:index]
 

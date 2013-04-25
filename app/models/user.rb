@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :bookmarks
+  has_many :velibstations
   has_one :weatherkey
 end
