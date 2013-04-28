@@ -1,8 +1,23 @@
+require 'velib_api'
+
 class VelibstationsController < ApiController
+
+  #include VelibApi
 
   # GET /velibstations.json
   def index
-    respond_with current_user.velibstations
+    velibreports = Array.new
+    current_user.velibstations.each do |station|
+      report = VelibApi.report(station.velib_station_id)
+      report = Hash.from_xml(report)
+
+      row = {}
+      row[:station] = station
+      row[:report] = report['station']
+
+      velibreports.push(row)
+    end
+    respond_with velibreports.to_json
   end
 
   # GET /velibstations/1.json

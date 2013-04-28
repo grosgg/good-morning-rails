@@ -2,6 +2,8 @@ require 'open-uri'
 
 class VelibreportsController < ApiController
 
+  caches_page :show, :expires_in => 2.minutes
+
   # GET /velibstations/1.json
   def show
     begin
