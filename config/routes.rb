@@ -4,9 +4,10 @@ GoodMorningRails::Application.routes.draw do
     :controllers => {sessions:'sessions', users:'users'} # custom controller for API token access
 
   resources :bookmarks, :except => [:new, :edit]
+  resources :stickyboards, :only => [:index, :show, :update]
+  resources :kunidays, :only => [:index, :show, :update]
   resources :velibstations, :except => [:new, :edit]
   resources :velibreports, :only => [:show]
-  resources :stickyboards, :only => [:index, :show, :update]
   resources :weatherkeys, :only => [:index]
   resources :weatherreports, :only => [:index]
 
