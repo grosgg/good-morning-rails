@@ -2,7 +2,7 @@ require 'velib_api'
 
 class VelibstationsController < ApiController
 
-  #include VelibApi
+  caches_page :index, :expires_in => 2.minutes
 
   # GET /velibstations.json
   def index

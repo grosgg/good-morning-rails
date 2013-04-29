@@ -8,6 +8,7 @@ GoodMorningRails::Application.routes.draw do
   resources :velibreports, :only => [:show]
   resources :stickyboards, :only => [:index, :show, :update]
   resources :weatherkeys, :only => [:index]
+  resources :weatherreports, :only => [:index]
 
   match '*catchall' => 'api#options', :via => [:options]
 

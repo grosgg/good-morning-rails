@@ -38,3 +38,4 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem 'devise', '2.2.3'
+gem 'httparty'
