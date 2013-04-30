@@ -4,12 +4,18 @@ class KunidaysController < ApiController
   def index
     #respond_with Kuniday.all
     currentDate = Date.today
+    thisWeek = currentDate.cweek
+    nextWeek = currentDate.cweek+1
+    newtWeek = 1 if thisWeek == 52
 
     # Check if entries for this week exist
-    Kuniday.where("week = ? AND year = ?", currentDate.cweek, currentDate.year)
+    tWeekKunidays = Kuniday.where("week = ? AND year = ?", currentDate.cweek, currentDate.year)
 
     # Check if entries for next week exist
-    Kuniday.where("week = ? AND year = ?", currentDate.cweek+1, currentDate.year)
+    nWeekKunidays = Kuniday.where("week = ? AND year = ?", currentDate.cweek+1, currentDate.year)
+
+    results = {:tWeek => tWeekKunidays, :nWeek => nWeekKunidays}
+    respond_with results
   end
 
   # GET /kunidays/1.json
