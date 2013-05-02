@@ -6,7 +6,11 @@ class KunidaysController < ApiController
     currentDate = Date.today
     thisWeek = currentDate.cweek
     nextWeek = currentDate.cweek+1
-    newtWeek = 1 if thisWeek == 52
+    year = currentDate
+    if thisWeek == 52 then
+        nextWeek = 1
+        year = year+1
+    end
 
     # Get this week entries
     tWeekKunidays = Kuniday.where("week = ? AND year = ?", currentDate.cweek, currentDate.year)
@@ -34,6 +38,18 @@ class KunidaysController < ApiController
       respond_with Kuniday.find(params[:id])
     rescue
       return record_not_found
+    end
+  end
+
+  # POST /kunidays.json
+  def create
+    params[:kuniday][:user] = current_user
+    @kuniday = Kuniday.new(params[:kuniday])
+
+    if @kuniday.save
+      respond_with @kuniday
+    else
+      render json: @kuniday.errors, status: :unprocessable_entity
     end
   end
 

@@ -5,7 +5,7 @@ GoodMorningRails::Application.routes.draw do
 
   resources :bookmarks, :except => [:new, :edit]
   resources :stickyboards, :only => [:index, :show, :update]
-  resources :kunidays, :only => [:index, :show, :update]
+  resources :kunidays, :only => [:index, :show, :create, :update]
   resources :velibstations, :except => [:new, :edit]
   resources :velibreports, :only => [:show]
   resources :weatherkeys, :only => [:index]
