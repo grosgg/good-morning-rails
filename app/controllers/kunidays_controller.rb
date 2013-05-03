@@ -28,7 +28,7 @@ class KunidaysController < ApiController
       nWeekHash[day.weekday] = day
     end
 
-    results = {:tWeek => tWeekHash, :nWeek => nWeekHash}
+    results = {thisWeek => tWeekHash, nextWeek => nWeekHash}
     respond_with results
   end
 
@@ -43,23 +43,7 @@ class KunidaysController < ApiController
 
   # POST /kunidays.json
   def create
-    params[:kuniday][:user] = current_user
-    @kuniday = Kuniday.new(params[:kuniday])
-
-    if @kuniday.save
-      respond_with @kuniday
-    else
-      render json: @kuniday.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PUT /kunidays/1.json
-  def update
-    begin
-      @kuniday = Kuniday.find(params[:id])
-    rescue
-      return record_not_found
-    end
+    @kuniday = Kuniday.find_or_create_by_year_and_week_and_weekday(params[:year], params[:week], params[:weekday]);
 
     begin
       @kuniday.update_attributes(params[:kuniday])
