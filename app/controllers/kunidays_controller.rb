@@ -32,10 +32,10 @@ class KunidaysController < ApiController
     respond_with results
   end
 
-  # GET /kunidays/1.json
+  # GET /kunidays/2013-05-05.json
   def show
     begin
-      respond_with Kuniday.find(params[:id])
+      respond_with Kuniday.find_by_date(params[:id])
     rescue
       return record_not_found
     end
@@ -44,6 +44,9 @@ class KunidaysController < ApiController
   # POST /kunidays.json
   def create
     @kuniday = Kuniday.find_or_create_by_year_and_week_and_weekday(params[:year], params[:week], params[:weekday]);
+
+    d = Date.commercial(params[:year], params[:week], params[:weekday])
+    params[:kuniday]['date'] = d
 
     begin
       @kuniday.update_attributes(params[:kuniday])
