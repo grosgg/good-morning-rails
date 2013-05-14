@@ -4,10 +4,11 @@ class KunidaysController < ApiController
   def index
     #respond_with Kuniday.all
     currentDate = Date.today
+    lastDayOfTheYear = Date.new(currentDate.cwyear,12,31)
     thisWeek = currentDate.cweek
     nextWeek = currentDate.cweek+1
-    year = currentDate
-    if thisWeek == 52 then
+    year = currentDate.cwyear
+    if thisWeek == lastDayOfTheYear.cweek then
         nextWeek = 1
         year = year+1
     end
