@@ -24,8 +24,9 @@ module WeatherApi
   def WeatherApi.forecast10day(key, country, town)
     response = HTTParty.get("http://api.wunderground.com/api/#{key}/forecast10day/q/#{country}/#{town}.json")
     response = JSON.parse(response.body)
-    response["forecast"].delete("simpleforecast")
-    response["forecast"]["txt_forecast"]["forecastday"].slice!(8,12)
+    response["forecast"].delete("txt_forecast")
+    response["forecast"]["simpleforecast"]["forecastday"].slice!(5,5)
+    response["forecast"]["simpleforecast"]["forecastday"].slice!(0,1)
     response["forecast"]
   end
 
