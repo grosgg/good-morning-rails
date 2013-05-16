@@ -22,17 +22,11 @@ class WeatherreportsController < ApiController
     country = current_user.country
     town = current_user.town
 
-    conditions = WeatherApi.conditions(key, country, town)
-    #logger.debug conditions
     astronomy = WeatherApi.astronomy(key, country, town)
-    #logger.debug conditions
     hourly = WeatherApi.hourly(key, country, town)
-    #logger.debug conditions
     forecast = WeatherApi.forecast10day(key, country, town)
-    #logger.debug conditions
 
     results = {
-        :conditions => conditions,
         :astronomy => astronomy,
         :hourly => hourly,
         :forecast => forecast,
