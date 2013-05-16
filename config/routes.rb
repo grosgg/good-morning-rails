@@ -8,8 +8,9 @@ GoodMorningRails::Application.routes.draw do
   resources :kunidays, :only => [:index, :show, :create, :update]
   resources :velibstations, :except => [:new, :edit]
   resources :velibreports, :only => [:show]
-  resources :weatherkeys, :only => [:index]
-  resources :weatherreports, :only => [:index]
+
+  match '/weatherreports/home' => 'weatherreports#home'
+  match '/weatherreports/full' => 'weatherreports#full'
 
   match '*catchall' => 'api#options', :via => [:options]
 
