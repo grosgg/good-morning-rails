@@ -1,7 +1,16 @@
 GoodMorningRails::Application.routes.draw do
 
   devise_for :users,
-    :controllers => {sessions:'sessions', users:'users'} # custom controller for API token access
+    #:controllers => {sessions:'sessions'}, # custom controller for API token access
+    :skip => [:registrations, :passwords, :sessions]
+    as :user do
+      #get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      #put 'users' => 'devise/registrations#update', :as => 'user_registration'
+      put 'users/password' => 'devise/passwords#update', :as => 'user_password'
+      get 'users' => 'sessions#show', :as => 'user_session'
+      post 'users/sign_in' => 'sessions#create', :as => 'new_user_session'
+      delete 'users/sign_out' => 'sessions#destroy', :as => 'destroy_user_session'
+    end
 
   resources :bookmarks, :except => [:new, :edit]
   resources :stickyboards, :only => [:index, :show, :update]

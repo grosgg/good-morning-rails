@@ -20,6 +20,11 @@ class SessionsController < ApiController
     render :json => { :message => ["Session deleted."] },  :success => true, :status => :ok
   end
  
+  def show
+    user = User.where(:authentication_token => params[:authentication_token]).first
+    render :json => {:user => user }, :status => :ok
+  end
+
   private
  
   def invalid_login_attempt
