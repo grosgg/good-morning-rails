@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
 
   has_many :bookmarks
   has_many :velibstations
+  has_many :newsstreams
   has_one :weatherkey
 end
