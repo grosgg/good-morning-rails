@@ -9,11 +9,18 @@
 User.destroy_all
 Bookmark.destroy_all
 Stickyboard.destroy_all
+Velibstation.destroy_all
+Newsstream.destroy_all
 
 users = User.create!(
     [
-        { email: 'marin.jeremy@gmail.com', password: 'sabusushi', password_confirmation: 'sabusushi' },
-        { email: 'tomoko1710@gmail.com', password: 'sabusushi', password_confirmation: 'sabusushi' }
+        {
+            email: 'demo@sabu.fr',
+            password: 'password',
+            password_confirmation: 'password',
+            country: 'Australia',
+            town: 'Kununurra'
+        }
     ]
 )
 
@@ -26,9 +33,9 @@ Bookmark.create!(
             user: users.first
         },
         {
-            title: 'Gaijin Japan',
-            url: 'http://www.gaijinjapan.org',
-            description: 'French blog about Japan',
+            title: 'Le Monde',
+            url: 'http://www.lemonde.fr',
+            description: 'French newspaper',
             user: users.first
         },
         {
@@ -38,18 +45,53 @@ Bookmark.create!(
             user: users.first
         },
         {
-            title: 'Min Plume',
-            url: 'http://www.min-plume.com',
-            description: 'Shibuya 109 clothes brand',
-            user: users.last
+            title: 'Sabu Portfolio',
+            url: 'http://sabu.fr',
+            description: 'Jeremy Marin portfolio',
+            user: users.first
         },
         {
             title: 'OVNI',
             url: 'http://www.ovninavi.com',
             description: 'Japanese newspaper in France',
-            user: users.last
+            user: users.first
         }
     ]
 )
 
-Stickyboard.create!({content:'Your new stickyboard'})
+Stickyboard.create!({id:1, content:'Your new stickyboard'})
+
+Velibstation.create!(
+    [
+        {
+            title: 'Rue Rossel',
+            velib_station_id: 42704,
+            user: users.first
+        },
+        {
+            title: 'Boulevard Arago',
+            velib_station_id: 13002,
+            user: users.first
+        },
+        {
+            title: 'Rue Chevaleret',
+            velib_station_id: 13053,
+            user: users.first
+        }
+    ]
+)
+
+Newsstream.create!(
+    [
+        {
+            title: 'Le Monde',
+            url: 'http://rss.lemonde.fr/c/205/f/3050/index.rss',
+            user: users.first
+        },
+        {
+            title: 'TechCrunch',
+            url: 'http://feeds.feedburner.com/TechCrunch/startups',
+            user: users.first
+        }
+    ]
+)
