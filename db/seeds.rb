@@ -59,7 +59,7 @@ Bookmark.create!(
     ]
 )
 
-Stickyboard.create!({id:1, content:'Your new stickyboard'})
+Stickyboard.create!({content:'Your new stickyboard'})
 
 Velibstation.create!(
     [

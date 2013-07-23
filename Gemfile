@@ -39,3 +39,4 @@ gem 'jquery-rails'
 
 gem 'devise', '2.2.3'
 gem 'httparty'
+gem 'mina'
