@@ -14,7 +14,7 @@ set :user, 'gros'
 #set :domain, 'grosgg.no-ip.org'
 #set :port, '2242'
 set :domain, '192.168.1.91'
-set :deploy_to, '/home/gros/web/prod/good-morning-rails'
+set :deploy_to, '/home/gros/web/prod/good-morning-rails-mina'
 set :repository, 'git://github.com/grosgg/good-morning-rails.git'
 set :branch, 'master'
 
@@ -33,10 +33,12 @@ set :shared_paths, ['config/database.yml', 'log']
 task :environment do
   # If you're using rbenv, use this to load the rbenv environment.
   # Be sure to commit your .rbenv-version to your repository.
-  # invoke :'rbenv:load'
+  invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use[ruby-1.9.3-p125@default]'
+
+  invoke :'nvm:load'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -70,6 +72,12 @@ task :deploy => :environment do
   end
 end
 
+task :'nvm:load' do
+  queue %{
+    echo "-----> Loading nvm"
+    #{echo_cmd %{source /home/gros/.nvm/nvm.sh}}
+  }
+end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
