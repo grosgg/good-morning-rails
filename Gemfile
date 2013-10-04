@@ -42,5 +42,6 @@ gem 'devise', '2.2.3'
 gem 'httparty'
 
 gem 'rails_12factor', group: :production
+gem 'newrelic_rpm', group: :production
 
 ruby '2.0.0'
