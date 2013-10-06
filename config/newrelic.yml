@@ -57,7 +57,7 @@ common: &default_settings
   # The newrelic agent generates its own log file to keep its logging
   # information separate from that of your application. Specify its
   # log level here.
-  log_level: info
+  log_level: debug
 
   # Optionally set the path to the log file This is expanded from the
   # root directory (may be relative or absolute, e.g. 'log/' or
@@ -223,5 +223,5 @@ production:
 # here.  By default, the staging environment has the agent turned on.
 staging:
   <<: *default_settings
-  monitor_mode: true
+  monitor_mode: false
   # app_name: My Application (Staging)
